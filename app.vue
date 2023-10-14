@@ -56,6 +56,26 @@
 
           </i>
         </button>
+        <button onclick="volumeUp()">
+          <i class="bx bx-skip-next">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="black" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+
+          </i>
+        </button>
+        <button onclick="volumeUp()">
+          <i class="bx bx-skip-next">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="black" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+
+          </i>
+        </button>
 
       </div>
     </div>
@@ -64,6 +84,22 @@
   
 </template>
 <script setup lang="ts">
+
+
+const volume = ref(1); 
+    const myVideo = ref(null);
+
+    const volumeUP = () => {
+      if (volume.value < 1) {
+        volume.value += 0.1;
+      }
+    };
+
+    const volumeDown = () => {
+      if (volume.value > 0) {
+        volume.value -= 0.1;
+      }
+    };
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;0,600;1,400;1,600&display=swap");
