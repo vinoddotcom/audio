@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="mt-12">
     <div class="flex  justify-center items-center">
     <div class="player max-w-min">
 
@@ -56,28 +56,32 @@
 
           </i>
         </button>
-        <button onclick="volumeUp()">
-          <i class="bx bx-skip-next">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="black" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-
-          </i>
-        </button>
-        <button onclick="volumeUp()">
-          <i class="bx bx-skip-next">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="black" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-
-          </i>
-        </button>
+       
 
       </div>
+      <div class="action pb-12">
+        <button onclick="volumeUp()">
+          <i class="bx bx-skip-next">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="black" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+
+          </i>
+        </button>
+        <button onclick="volumeUp()">
+          <i class="bx bx-skip-next">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="black" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+
+          </i>
+        </button>
+      </div>
+      
     </div>
   </div>
   </div>
@@ -105,7 +109,7 @@ const volume = ref(1);
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;0,600;1,400;1,600&display=swap");
 
 * {
-  margin: 0;
+
   padding: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
