@@ -64,7 +64,6 @@
   
 </template>
 <script setup lang="ts">
-let audio = new Audio('/path/to/audio.mp3');
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;0,600;1,400;1,600&display=swap");
