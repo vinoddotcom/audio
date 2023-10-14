@@ -1,9 +1,10 @@
 <template>
-  <div class="flex w-full h-full justify-center items-center">
+  <div class="">
+    <div class="flex  justify-center items-center">
     <div class="player max-w-min">
 
-      <div class="header">
-        Music <span>Player</span>
+      <div class="header ">
+        <span> Music Player</span>
       </div>
 
       <div class="img">
@@ -24,7 +25,7 @@
       </div>
       <input type="range" id="progress" value="0">
 
-      <div class="action">
+      <div class="action bg-gray-100">
 
         <button onclick="prevPlay()">
           <i class="bx bx-skip-previous">
@@ -59,6 +60,8 @@
       </div>
     </div>
   </div>
+  </div>
+  
 </template>
 <script setup lang="ts">
 
