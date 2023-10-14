@@ -27,15 +27,33 @@
       <div class="action">
 
         <button onclick="prevPlay()">
-          <i class="bx bx-skip-previous"></i>
+          <i class="bx bx-skip-previous">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="black" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+
+          </i>
         </button>
 
         <button onclick="playPause()" class="play" id="play">
-          <i class="bx bx-play"></i>
+          <i class="bx bx-play"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+            </svg>
+          </i>
         </button>
 
         <button onclick="nextPlay()">
-          <i class="bx bx-skip-next"></i>
+          <i class="bx bx-skip-next">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="black" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+
+          </i>
         </button>
 
       </div>
@@ -43,7 +61,7 @@
   </div>
 </template>
 <script setup lang="ts">
- 
+
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;0,600;1,400;1,600&display=swap");
@@ -205,5 +223,4 @@ body {
   border-radius: 3px;
   background: linear-gradient(135deg, #ffa17f, #ff688f);
   transition: 0.2s ease-in-out;
-}
-</style>
+}</style>
