@@ -1,46 +1,49 @@
 <template>
-  <div class="player">
+  <div class="flex w-full h-full justify-center items-center">
+    <div class="player max-w-min">
 
-    <div class="header">
-      Music <span>Player</span>
-    </div>
+      <div class="header">
+        Music <span>Player</span>
+      </div>
 
-    <div class="img">
-      <img src="" id="thumb">
-    </div>
-    <div class="details">
-      <h3 id="title"></h3>
-      <p id="musician"></p>
-    </div>
-    <audio id="song">
-      <source src="" type="audio/mp3" />
-    </audio>
+      <div class="img">
+        <img src="" id="thumb">
+      </div>
+      <div class="details">
+        <h3 id="title"></h3>
+        <p id="musician"></p>
+      </div>
+      <audio id="song">
+        <source src="" type="audio/mp3" />
 
-    <div class="time">
-      <span id="start">2:28</span>
-      <span id="end">4:33</span>
-    </div>
-    <input type="range" id="progress" value="0">
+      </audio>
 
-    <div class="action">
+      <div class="time">
+        <span id="start">2:28</span>
+        <span id="end">4:33</span>
+      </div>
+      <input type="range" id="progress" value="0">
 
-      <button onclick="prevPlay()">
-        <i class="bx bx-skip-previous"></i>
-      </button>
+      <div class="action">
 
-      <button onclick="playPause()" class="play" id="play">
-        <i class="bx bx-play"></i>
-      </button>
+        <button onclick="prevPlay()">
+          <i class="bx bx-skip-previous"></i>
+        </button>
 
-      <button onclick="nextPlay()">
-        <i class="bx bx-skip-next"></i>
-      </button>
+        <button onclick="playPause()" class="play" id="play">
+          <i class="bx bx-play"></i>
+        </button>
 
+        <button onclick="nextPlay()">
+          <i class="bx bx-skip-next"></i>
+        </button>
+
+      </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-
+ 
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;0,600;1,400;1,600&display=swap");

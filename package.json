@@ -17,6 +17,7 @@
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
-    "firebase": "^10.4.0"
+    "firebase": "^10.4.0",
+    "heroicons": "^2.0.18"
   }
 }
