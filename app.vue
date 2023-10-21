@@ -199,7 +199,7 @@ function updateTime() {
 
 function getRandomIndex() {
     const random = Math.random();
-    return (random * (songsArray.length -1));
+    return Math.floor((random * (songsArray.length)));
 }
 
 
@@ -243,6 +243,7 @@ function nextSound() {
   currentSong.value.pause();
   if(isShuffle.value) {
     currentIndex.value = getRandomIndex();
+    console.log(currentIndex.value);
   } else {
     if (currentIndex.value === songsArray.length - 1) currentIndex.value = 0;
     else currentIndex.value += 1;
