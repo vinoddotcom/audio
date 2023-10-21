@@ -146,12 +146,18 @@
         {{ song.title }}
       </div>
     </div>
-  </div>
+      </div>
 </template>
 <script setup lang="ts">
-import audio1 from "./assets/audio/Chaleya-Jawan-320-Kbps.mp3";
-import audio2 from "./assets/audio/Hua-Main-Animal-320-Kbps.mp3";
-import audio3 from "./assets/audio/Not-Ramaiya-Vastavaiya-Jawan-320-Kbps.mp3";
+import audio1 from "./assets/audio/Chaleya-Jawan-320-Kbps.mp3"
+import audio2 from "./assets/audio/Hua-Main-Animal-320-Kbps.mp3"
+import audio3 from "./assets/audio/Not-Ramaiya-Vastavaiya-Jawan-320-Kbps.mp3"
+import audio4 from "./assets/audio/Pal Pal... Har Pal - Lage Raho Munna Bhai 128 Kbps.mp3"
+import audio5 from "./assets/audio/_Ram Siya Ram_320(PagalWorld.com.pe).mp3"
+import audio6 from "./assets/audio/_Meri Maa_320(PagalWorld.com.pe).mp3"
+import audio7 from "./assets/audio/Manwa Laage 128 Kbps.mp3"
+import audio8 from "./assets/audio/RaMChandra Kah Gaye - Gopi.mp3"
+
 
 const title = ref("");
 const currentIndex = ref(0);
@@ -163,6 +169,11 @@ const songsArray = [
   { audio: audio1, title: "Chaleya Jawan" },
   { audio: audio2, title: "Hua Main Animal" },
   { audio: audio3, title: "Not Ramaiya Vastavaiya Jawan" },
+  { audio: audio4, title: "pal pal pal har pal"},
+  { audio: audio5, title: "Ram siya Ram"}, 
+  { audio: audio6, title: "Meri maa"},
+  { audio: audio7, title: "Manwa lage"},
+  { audio: audio8, title: "Ram chandra kah gaye"}
 ];
 
 const totalTime = ref(0);
