@@ -20,7 +20,6 @@
           <span id="end">4:33</span>
         </div>
         <input type="range" id="progress" value="0">
-
         <div class="action bg-gray-100">
 
           <button @click.prevent="previousSound()">
@@ -82,6 +81,8 @@ import audio3 from "./assets/audio/Not-Ramaiya-Vastavaiya-Jawan-320-Kbps.mp3"
 
 const volume = ref(1);
 const myVideo = ref(null);
+const currentIndex = ref(0)
+const songsArray = [audio1, audio2, audio3]
 
 const volumeUP = () => {
   if (volume.value < 1) {
@@ -95,37 +96,29 @@ const volumeDown = () => {
   }
 };
 
-const currentIndex = ref(1)
-const songsArray = [null, audio1, audio2, audio3]
-const currentSong = ref<HTMLAudioElement | null>(null)
+
+const currentSong = computed(() => {
+  const song = new Audio(songsArray[currentIndex.value]!);
+  return song;
+})
 
 const count = ref(0)
 
 function previousSound() {
-  if ((currentIndex.value - 1) === 0) currentIndex.value = 3;
-  else currentIndex.value -= 1;
-  count.value = 0
+  currentSong.value.pause()
+  if(currentIndex.value === 0) currentIndex.value = 2
+  else currentIndex.value -= 1
   playSound()
 }
 
 function playSound() {
-  if (currentSong.value) currentSong.value.pause()
-  const song = new Audio(songsArray[currentIndex.value]!)
-  currentSong.value = song
-  if (count.value % 2 === 0) {
-    song.play();
-    count.value += 1;
-  }
-  else {
-    song.pause();
-    count.value += 1;
-  }
+  currentSong.value.paused ? currentSong.value.play() : currentSong.value.pause()
 }
 
 function nextSound() {
-  if ((currentIndex.value + 1) === 4) currentIndex.value = 1;
-  else currentIndex.value += 1;
-  count.value = 0
+  currentSong.value.pause()
+  if(currentIndex.value === (songsArray.length -1)) currentIndex.value = 0
+  else currentIndex.value += 1
   playSound()
 }
 
