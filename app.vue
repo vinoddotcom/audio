@@ -118,8 +118,8 @@
               </svg>
             </i>
           </button>
-          <button>
-            <svg class="h-6 w-6" width="800px" height="800px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <button @click="repeatSong = !repeatSong">
+            <svg :class="['h-6 w-6', repeatSong ? 'opacity-100' : 'opacity-60']" width="800px" height="800px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>Repeat-Play</title>
               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Repeat-Play">
@@ -157,6 +157,7 @@ const title = ref("");
 const currentIndex = ref(0);
 const progress = ref(0);
 const volume = ref(1);
+const repeatSong = ref(false);
 
 const songsArray = [
   { audio: audio1, title: "Chaleya Jawan" },
@@ -189,7 +190,8 @@ watch(
   () => {
     if (currentSong) {
       currentSong.value.addEventListener("ended", () => {
-        nextSound();
+        if(repeatSong.value) currentSong.value.play();
+        else nextSound();
       });
       currentSong.value.addEventListener("loadeddata", () => {
         totalTime.value = currentSong.value.duration;
@@ -243,6 +245,7 @@ function setCurrentSong(index: number) {
   currentSong.value.play()
 }
 
+// update current song's volume on volume change.
 watch(volume, () => {
   currentSong.value.volume = volume.value;
 })
