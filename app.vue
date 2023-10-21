@@ -10,17 +10,17 @@
           <img src="" id="thumb">
         </div>
         <div class="details">
-          <h3 id="title"></h3>
+          <h3 id="title">{{title}}</h3>
           <p id="musician"></p>
         </div>
         <!-- <audio src="assets/audio/audio1.mp3" controls autoplay loop></audio> -->
 
         <div class="time">
-          <span id="start">2:28</span>
-          <span id="end">4:33</span>
+          <span id="start">{{ totalTime }}</span>
+          <span id="end">{{ remaining }}</span>
         </div>
-        <input type="range" id="progress" value="0">
-        <div class="action bg-gray-100">
+        <input ref="audioRef" type="range" id="progress" :value="progress">
+        <div class="action mt-4">
 
           <button @click.prevent="previousSound()">
             <i class="bx bx-skip-next">
@@ -68,7 +68,6 @@
             </i>
           </button>
         </div>
-
       </div>
 
     </div>
@@ -93,9 +92,18 @@ function getName(url: string) {
 }
 
 const volume = ref(1);
-const myVideo = ref(null);
+const title = ref('');
 const currentIndex = ref(0)
-const songsArray = [audio1, audio2, audio3]
+const progress = ref(0)
+const audioRef = ref()
+
+const songsArray = [
+ {audio: audio1, title: "Chaleya Jawan"},
+ {audio: audio2, title: "Hua Main Animal"}, 
+ {audio: audio3, title: "Not Ramaiya Vastavaiya Jawan"}, 
+ ]
+const totalTime = ref('0:00')
+const remaining = ref('0:00')
 
 const volumeUP = () => {
   if (volume.value < 1) {
@@ -110,10 +118,33 @@ const volumeDown = () => {
 };
 
 
+
+
 const currentSong = computed(() => {
-  const song = new Audio(songsArray[currentIndex.value]!);
+  const song = new Audio(songsArray[currentIndex.value]!.audio);
   return song;
 })
+
+
+
+function formatTime(seconds: number) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+}
+
+
+watch(currentSong, () => {
+  if(currentSong) {
+    currentSong.value.addEventListener("ended", () => { nextSound()});
+    currentSong.value.addEventListener("loadeddata", () => { totalTime.value = formatTime(currentSong.value.duration)});
+    currentSong.value.addEventListener("timeupdate", () => {
+    remaining.value = formatTime(currentSong.value.currentTime);
+    progress.value = (currentSong.value.currentTime/currentSong.value.duration)*100;
+  }); 
+  title.value = songsArray[currentIndex.value].title
+  }
+}, {immediate: true})
 
 const count = ref(0)
 
