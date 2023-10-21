@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="flex  justify-center items-center">
+    <div class="flex flex-col justify-center items-center">
     <div class="player max-w-min">
 
       <div class="header ">
@@ -58,12 +58,28 @@
         </button>
 
       </div>
+
+    </div>
+
+    <div class="list">
+      <div 
+        v-for="song in songsList"
+       class="border border-red-300 player-list-item">{{getName(song)}}</div>
     </div>
   </div>
   </div>
   
 </template>
 <script setup lang="ts">
+import a from "./assets/audio/Chaleya-Jawan-320-Kbps.mp3";
+import b from "./assets/audio/Hua-Main-Animal-320-Kbps.mp3";
+import c from "./assets/audio/Not-Ramaiya-Vastavaiya-Jawan-320-Kbps.mp3";
+
+const songsList = ref([a, b, c]);
+
+function getName(url: string) {
+  return url.split("/").pop()
+}
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;0,600;1,400;1,600&display=swap");
@@ -225,4 +241,18 @@ body {
   border-radius: 3px;
   background: linear-gradient(135deg, #ffa17f, #ff688f);
   transition: 0.2s ease-in-out;
-}</style>
+}
+
+.list {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+.player-list-item {
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+</style>
