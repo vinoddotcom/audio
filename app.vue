@@ -99,9 +99,11 @@
           </button>
         </div>
         <div class="flex justify-between items-center">
-          <div>
-            <img width="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACOElEQVR4nO2YTWsTQRiAn40lotJDQPAaqOhZDT3Y5Bd46a3/QGjBcz2rKV6sqYfa4EeQpvbiyYPX5lJDfkBzUONV0XqQSGyRprLwLgxDNrub7NfQfWAuO/O+8w47835BRkZGRgRUgT7wDMhhIL+BUxmvTDzEunIAIw9hAc+1Q7w28RCbZ+oQa8CxttgZR0BPhMshGlgRnT3Z49Tn2BilrB9AwVvg0hSG27K7AfbTh+2lRvpetz8wanwEZicwflZkJzXe9Q+M4zxwE2gAQ0XRB2AmgJ4ZkXHkh3KFbsgeOjlxoaG61BVNYT2A7JYmuzxmbSTGOzzSFK/6kLmvyTxIMg7YGzS1q7A0Zv2SdvW2RYcbtTgisX1nW8omf11cbFnmnHV7QN5D9yCuNKIAdJXNOtr8NeBQmT8QGS8eS1x4GkfkLQLfgV/AdeX7ZeCTYvwP4CopZV6iqsMFoK0Y/wcoYQg54J1i/AmwiMG5/D0M4q5m/BMM4g7wTzH+PXAOQyjJQ3WMb8tDdqjIQ08lReCbYvxX4IoyPycu9Gca3WhBgpNj/KEEL5WOMt/1GciqcbRV8pIWBE0lWi6pc6xtFUsSskmTuaZHMrcedTL3MIR02taRSDqtFzR2keKXuia7EldBY9/ZW8AbTWEYJWVDytWpS8o17bF5jf00FfVWgLbKUB7wRaZrq+xE0VZx+wN2cfEZeAHcJjwWgJfAlzAaW2nEMrnJa2XGJ0gt6kgcNQOTjY+9rZKRkUFy/AdXR3v4IGsOegAAAABJRU5ErkJggg==">
-          </div>
+          <button>
+            <svg class="h-6 w-6" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 15L21 18M21 18L18 21M21 18H18.5689C17.6297 18 17.1601 18 16.7338 17.8705C16.3564 17.7559 16.0054 17.5681 15.7007 17.3176C15.3565 17.0348 15.096 16.644 14.575 15.8626L14.3333 15.5M18 3L21 6M21 6L18 9M21 6H18.5689C17.6297 6 17.1601 6 16.7338 6.12945C16.3564 6.24406 16.0054 6.43194 15.7007 6.68236C15.3565 6.96523 15.096 7.35597 14.575 8.13744L9.42496 15.8626C8.90398 16.644 8.64349 17.0348 8.29933 17.3176C7.99464 17.5681 7.64357 17.7559 7.2662 17.8705C6.83994 18 6.37033 18 5.43112 18H3M3 6H5.43112C6.37033 6 6.83994 6 7.2662 6.12945C7.64357 6.24406 7.99464 6.43194 8.29933 6.68236C8.64349 6.96523 8.90398 7.35597 9.42496 8.13744L9.66667 8.5" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
           <button @click="volumeDown()">
             <i class="bx bx-skip-next">
               <svg :class="['h-6 w-6 rotate-180', volume === 0 ? 'opacity-40' : '']" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -116,9 +118,20 @@
               </svg>
             </i>
           </button>
-          <div>
-            <img width="30" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABRklEQVR4nO2YQU7DMBBFH1mUW1Rwh94AlZMVwYYCRWrVBZwN1AMEqIpYVBpk5EqW1So1TWMPzJO8TPKfJ3HsAcMwSuEKWAIToEIh74D48aRRYhwIqJQ4AWaRxLNGialJBJwBc2ABrKOZ6Xo8kMgl8JE5tATDrVJ7c15YeEmtwDy48AW4AHp0Q+WX0IOW1EVwsQuPpvBEH6yqmd8Q3qQr7hvCD0oX+GwIX5cucAN8AXc7wkvpArvYhFcrICaQGbEKZEasApmRf12B+ni5ji9QRxso93t/9M2nUfs52xXYFj7c6r5RuMCgYZ9+S3fIId9jq4eMX3AaPNcdslSFdwyjs7ma8D3f1nkNnu86dnszKaCNIlFPqJ8isCws/DC1hLkrsPavzzR15v9cq3tmEgVQbVlSXesDzRIrFFL5mXfNp+vcYQzD4IdvfiKXOauBYKcAAAAASUVORK5CYII=">
-          </div>
+          <button>
+            <svg class="h-6 w-6" width="800px" height="800px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <title>Repeat-Play</title>
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Repeat-Play">
+                    <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"> </rect>
+                    <path d="M5,18.0002 L17,18.0002 C18.6569,18.0002 20,16.657 20,15.0002 L20,14" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M16,2 L19.2929,5.29289 C19.6834,5.68342 19.6834,6.31658 19.2929,6.70711 L16,10" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M8,14 L4.70711,17.2929 C4.31658,17.6834 4.31658,18.3166 4.70711,18.7071 L8,22" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M19,6 L7,6 C5.34315,6 4,7.34315 4,9 L4,10" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round"></path>
+                  </g>
+              </g>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -214,14 +227,12 @@ function nextSound() {
 
 const volumeUp = () => {
   if (volume.value < 1) {
-    console.log(volume.value)
     volume.value = Number((volume.value + 0.1).toFixed(1));  
   }
 };
 
 const volumeDown = () => {
   if (volume.value > 0) {
-    console.log(volume.value)
     volume.value = Number((volume.value - 0.1).toFixed(1));
   }
 };
