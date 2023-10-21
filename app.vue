@@ -99,8 +99,8 @@
           </button>
         </div>
         <div class="flex justify-between items-center">
-          <button>
-            <svg class="h-6 w-6" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <button @click="toggleShuffle">
+            <svg :class="['h-6 w-6', isShuffle ? 'opacity-40' : 'opacity-100' ]" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M18 15L21 18M21 18L18 21M21 18H18.5689C17.6297 18 17.1601 18 16.7338 17.8705C16.3564 17.7559 16.0054 17.5681 15.7007 17.3176C15.3565 17.0348 15.096 16.644 14.575 15.8626L14.3333 15.5M18 3L21 6M21 6L18 9M21 6H18.5689C17.6297 6 17.1601 6 16.7338 6.12945C16.3564 6.24406 16.0054 6.43194 15.7007 6.68236C15.3565 6.96523 15.096 7.35597 14.575 8.13744L9.42496 15.8626C8.90398 16.644 8.64349 17.0348 8.29933 17.3176C7.99464 17.5681 7.64357 17.7559 7.2662 17.8705C6.83994 18 6.37033 18 5.43112 18H3M3 6H5.43112C6.37033 6 6.83994 6 7.2662 6.12945C7.64357 6.24406 7.99464 6.43194 8.29933 6.68236C8.64349 6.96523 8.90398 7.35597 9.42496 8.13744L9.66667 8.5" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
@@ -118,8 +118,8 @@
               </svg>
             </i>
           </button>
-          <button @click="repeatSong = !repeatSong">
-            <svg :class="['h-6 w-6', repeatSong ? 'opacity-100' : 'opacity-60']" width="800px" height="800px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <button @click="toggleRepeat">
+            <svg :class="['h-6 w-6', repeatSong ? 'opacity-40' : 'opacity-100']" width="800px" height="800px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>Repeat-Play</title>
               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Repeat-Play">
@@ -164,6 +164,7 @@ const currentIndex = ref(0);
 const progress = ref(0);
 const volume = ref(1);
 const repeatSong = ref(false);
+const isShuffle = ref(false)
 
 const songsArray = [
   { audio: audio1, title: "Chaleya Jawan" },
@@ -196,6 +197,13 @@ function updateTime() {
   currentSong.value.currentTime = (totalTime.value * progress.value) / 100;
 }
 
+function getRandomIndex() {
+    const random = Math.random();
+    return (random * (songsArray.length -1));
+}
+
+
+
 watch(
   currentSong,
   () => {
@@ -220,7 +228,7 @@ watch(
 
 function previousSound() {
   currentSong.value.pause();
-  if (currentIndex.value === 0) currentIndex.value = 2;
+  if (currentIndex.value === 0) currentIndex.value = songsArray.length - 1;
   else currentIndex.value -= 1;
   playSound();
 }
@@ -233,10 +241,25 @@ function playSound() {
 
 function nextSound() {
   currentSong.value.pause();
-  if (currentIndex.value === songsArray.length - 1) currentIndex.value = 0;
-  else currentIndex.value += 1;
+  if(isShuffle.value) {
+    currentIndex.value = getRandomIndex();
+  } else {
+    if (currentIndex.value === songsArray.length - 1) currentIndex.value = 0;
+    else currentIndex.value += 1;
+  }
   playSound();
 }
+
+function toggleShuffle() {
+  isShuffle.value = !isShuffle.value
+  if(repeatSong.value && isShuffle.value) repeatSong.value = false
+}
+
+function toggleRepeat() {
+  repeatSong.value = !repeatSong.value
+  if(isShuffle.value && repeatSong.value) isShuffle.value = false
+}
+
 
 const volumeUp = () => {
   if (volume.value < 1) {
