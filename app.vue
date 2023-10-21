@@ -74,9 +74,10 @@
 
     <div class="list">
       <div 
-        v-for="song in songsList"
-       class="border border-gray-300 player-list-item"
-       :class="currentSong?.attributes.src.nodeValue === song ? 'bg-red-400 text-white' : ''">{{getName(song)}}</div>
+        v-for="(song, i) in songsList"
+        @click="setCurrentSong(i)"
+        class="border border-gray-300 player-list-item"
+        :class="currentSong?.attributes.src.nodeValue === song ? 'bg-red-400 text-white' : ''">{{getName(song)}}</div>
     </div>
   </div>
 </template>
@@ -166,10 +167,13 @@ function nextSound() {
   playSound()
 }
 
-
-watch(currentSong, () => {
-  console.dir(currentSong.value?.attributes.src.nodeValue, "==")
-})
+function setCurrentSong(index: number) {
+  // pause currently playing song first.
+  if(!currentSong.value.paused) currentSong.value.pause();
+  
+  currentIndex.value = index;
+  currentSong.value.play()
+}
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;0,600;1,400;1,600&display=swap");
