@@ -2,7 +2,6 @@
   <div class="mt-12">
     <div class="flex  justify-center items-center">
     <div class="player max-w-min">
-
       <div class="header ">
         <span> Music Player</span>
       </div>
@@ -14,10 +13,7 @@
         <h3 id="title"></h3>
         <p id="musician"></p>
       </div>
-      <audio id="song">
-        <source src="" type="audio/mp3" />
-
-      </audio>
+      <!-- <audio src="assets/audio/audio1.mp3" controls autoplay loop></audio> -->
 
       <div class="time">
         <span id="start">2:28</span>
@@ -27,34 +23,16 @@
 
       <div class="action bg-gray-100">
 
-        <button onclick="prevPlay()">
-          <i class="bx bx-skip-previous">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="black" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-
-          </i>
+        <button @click.prevent="previousSound()">
+          <i class="bx bx-skip-previous">ss</i>
         </button>
 
-        <button onclick="playPause()" class="play" id="play">
-          <i class="bx bx-play"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-            </svg>
-          </i>
+        <button @click.prevent="playSound()" class="play" id="play">
+          <i class="bx bx-play"></i>
         </button>
 
-        <button onclick="nextPlay()">
-          <i class="bx bx-skip-next">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="black" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-
-          </i>
+        <button type="button" @click.prevent="nextSound()">
+          <i class="bx bx-skip-next">dd</i>
         </button>
        
 
@@ -88,6 +66,9 @@
   
 </template>
 <script setup lang="ts">
+import audio1 from "./assets/audio/Chaleya-Jawan-320-Kbps.mp3"
+import audio2 from "./assets/audio/Hua-Main-Animal-320-Kbps.mp3"
+import audio3 from "./assets/audio/Not-Ramaiya-Vastavaiya-Jawan-320-Kbps.mp3"
 
 
 const volume = ref(1); 
@@ -104,6 +85,41 @@ const volume = ref(1);
         volume.value -= 0.1;
       }
     };
+
+  const currentIndex = ref(1)
+  const songsArray = [null,audio1,audio2,audio3]
+  const currentSong = ref(null)
+
+  const count = ref(0)
+
+  function previousSound() {
+    if((currentIndex.value - 1) === 0) currentIndex.value = 3;
+    else currentIndex.value -= 1;
+    count.value = 0
+    playSound(currentIndex.value)
+  }
+  
+  function playSound(index) {
+    if (currentSong.value) currentSong.value.pause()
+    const song = new Audio(songsArray[currentIndex.value])
+    currentSong.value = song
+      if (count.value % 2 === 0){
+        song.play();
+        count.value += 1;
+      }
+      else{
+        song.pause();
+        count.value += 1;
+      }
+  }
+  
+  function nextSound(){
+    if((currentIndex.value + 1) === 4) currentIndex.value = 1;
+    else currentIndex.value += 1;
+    count.value = 0
+    playSound(currentIndex.value)
+  }
+
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;0,600;1,400;1,600&display=swap");
